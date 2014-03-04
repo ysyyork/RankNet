@@ -1,7 +1,8 @@
 '''
 Ranknet
 
-Ranking documents using neural networks
+Learning to rank using gradient descent. A simplified implementation of the 
+algorithm described in http://research.microsoft.com/en-us/um/people/cburges/papers/icml_ranking.pdf
 '''
 
 import math
@@ -42,8 +43,11 @@ def readDataset(path):
     print('Read %d lines from file...' %(len(X_train)))         
     return (X_train, y_train, Query)  
             
-#Extract features from a dataset line
 def extractFeatures(split):
+    '''
+    Extract the query to document features used
+    as input to the neural network
+    '''
     features = []
     for i in range(2, 48):
         features.append(float(split[i].split(':')[1]))   
